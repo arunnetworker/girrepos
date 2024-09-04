@@ -9,3 +9,14 @@
           baseurl: http://pkg.jenkins.io/redhat-stable
           gpgkey: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
       - name: install java and jenkins
+
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - java
+          - jenkins
+      - name: start serices
+        service: 
+         name: jenkins
+         state: started    
