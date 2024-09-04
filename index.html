@@ -19,4 +19,14 @@
       - name: start serices
         service: 
          name: jenkins
+         state: started   
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - java
+          - jenkins
+      - name: start serices
+        service: 
+         name: jenkins
          state: started    
